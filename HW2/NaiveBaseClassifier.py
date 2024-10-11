@@ -61,10 +61,10 @@ def testing_discrete(test_images, test_labels, likelihood, prior):
                     post[j] += math.log(max(1e-6, likelihood[j, k * cols + l, test_images[i, k, l]]))
             post[j] += math.log(prior[j])
         post /= sum(post)
-        print('Posterior (in log scale):')
-        for j in range(10):
-            print(f'{j}: {post[j]}')
-        print(f'Prediction:{np.argmin(post)}, Ans:{label}')
+        # print('Posterior (in log scale):')
+        # for j in range(10):
+        #     print(f'{j}: {post[j]}')
+        # print(f'Prediction:{np.argmin(post)}, Ans:{label}')
         if np.argmin(post) != label:
             error += 1
     print(f'error rate:{error / num_images}')
@@ -148,10 +148,10 @@ def testing_continuous(test_images, test_labels, means, variances, prior):
             post[j] = np.sum(stats.norm.logpdf(test_images[i].reshape(-1), mu, np.sqrt(var)))
             post[j] += math.log(prior[j])
         post /= sum(post)
-        print('Posterior (in log scale):')
-        for j in range(10):
-            print(f'{j}: {post[j]}')
-        print(f'Prediction:{np.argmin(post)}, Ans:{label}')
+        # print('Posterior (in log scale):')
+        # for j in range(10):
+        #     print(f'{j}: {post[j]}')
+        # print(f'Prediction:{np.argmin(post)}, Ans:{label}')
         if np.argmin(post) != label:
             error += 1
     print(f'error rate:{error / num_images}')
