@@ -39,14 +39,17 @@ def sequentialEstimator(mu, var):
     while True:
         print(f'Add data point:{randNum}')
         print(f'Mean = {mean} Variance = {variance}')
-        if abs(mean - mu) < epsilon and abs(variance - var) < epsilon:
+        if n != 1 and abs(newmean - mean) < epsilon and abs(newvar - variance) < epsilon:
             break
+        if n != 1:
+            mean = newmean
+            variance = newvar
 
         randNum = randomNumberGeneratorGaussian(mu, var)
 
-        mean = (n * mean + randNum) / (n + 1)
+        newmean = (n * mean + randNum) / (n + 1)
         square += pow(randNum, 2)
-        variance = (square - (n + 1) * pow(mean, 2)) / n
+        newvar = (square - (n + 1) * pow(newmean, 2)) / n
         n += 1
 
         # n += 1  # Welford's online algorithm
