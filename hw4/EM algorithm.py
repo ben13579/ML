@@ -2,7 +2,7 @@ from parse_data import load_mnist
 import numpy as np
 
 
-def Estep(images, lam, bernoulli):
+def Estep(images, lam, bernoulli):  # image:x,bernoulli:theta;class:z
     num_images = images.shape[0]
     height, width = images[0].shape
     w = np.zeros((num_images, 10))
@@ -36,8 +36,8 @@ def assign_labels(w, labels):
     all_labels = set(range(10))
     empty_clusters = []
 
-    for i in range(10):
-        cluster_indices = np.argmax(w, axis=1) == i
+    for i in range(10):  # 找target label
+        cluster_indices = np.argmax(w, axis=1) == i  # 針對每張照片照max w
         if np.sum(cluster_indices) > 0:
             # print(i)
             target_label = np.bincount(labels[cluster_indices]).argmax()
