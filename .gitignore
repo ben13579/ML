@@ -1,0 +1,7 @@
+/hw6/frames
+/hw6/image*
+*.npy
+/hw6/ML_HW6_110550087_俞柏帆
+*.pyc
+__pycache__/
+*/.idea
